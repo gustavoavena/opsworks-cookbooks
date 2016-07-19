@@ -10,6 +10,6 @@ node[:deploy].each do |app, deploy|
   end
 
   file File.join(deploy[:deploy_to], 'shared', 'config', 'app_data.yml') do
-    content YAML.dump(node[:deploy][app].to_hash)
+    content YAML.dump(node[:deploy][app][:environment].to_hash)
   end
 end
