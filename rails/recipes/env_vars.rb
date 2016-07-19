@@ -1,3 +1,4 @@
+
 node[:deploy].each do |app, deploy|
 
  directory "#{deploy[:deploy_to]}/shared/config" do
@@ -6,9 +7,9 @@ node[:deploy].each do |app, deploy|
       mode 0774
       recursive true
       action :create
-    end
+  end
 
   file File.join(deploy[:deploy_to], 'shared', 'config', 'app_data.yml') do
-    content YAML.dump(node[:my_app_data][app].to_hash)
+    content YAML.dump(node[:deploy][app].to_hash)
   end
 end
