@@ -2,7 +2,7 @@ Chef::Log.info("Adding environment_variables.rb")
 
 
 
-template "#{deploy[:deploy_to]}/shared/app.env" do
+template "#{node[:deploy][:deploy_to]}/shared/app.env" do
     mode "0600" # what permissions should I give?
     user deploy[:user]
     group deploy[:group]
